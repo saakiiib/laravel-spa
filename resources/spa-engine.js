@@ -10,7 +10,6 @@
 
     function setLoading(state) {
         document.body.setAttribute('data-spa-loading', state ? 'true' : 'false');
-        if (window.NProgress) { state ? NProgress.start() : NProgress.done(); }
     }
 
     function normalizePath(pathname) {
@@ -102,7 +101,10 @@
                 window.location.href = url; return;
             }
             var payload = await response.json();
-            if (!payload || typeof payload.content === 'undefined') {
+            if (payload.redirect) {
+                window.location.href = payload.redirect; return;
+            }
+            if (!payload || !payload.content || !payload.content.trim()) {
                 window.location.href = url; return;
             }
             applyStyles(payload.style || '');
