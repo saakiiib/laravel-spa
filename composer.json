@@ -1,5 +1,5 @@
 {
-    "name": "sakib/laravel-spa",
+    "name": "saakiiib/laravel-spa",
     "description": "Zero-reload SPA engine for Laravel Blade — no jQuery, no Livewire, no Inertia.",
     "type": "library",
     "license": "MIT",
