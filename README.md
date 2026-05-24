@@ -88,11 +88,11 @@ public function about()
 
 **1. Layout component**
 
-Add `data-spa-layout-style` to your global `<style>` blocks and `data-spa-layout-script` to your global `<script>` blocks — this tells the package what belongs to the layout vs the page. Add `@spaContent` to your content wrapper and `@spaEngine` before `</body>`.
+Add `@spaContent` to your content wrapper and `@spaEngine` before `</body>`.
 
 ```blade
 <head>
-    <style data-spa-layout-style>
+    <style>
         /* global styles */
     </style>
 
@@ -103,8 +103,8 @@ Add `data-spa-layout-style` to your global `<style>` blocks and `data-spa-layout
         {{ $slot }}
     </main>
 
-    <script data-spa-layout-script>
-        /* global scripts — jquery helpers, ajax setup etc */
+    <script>
+        /* global scripts */
     </script>
 
     @spaEngine
