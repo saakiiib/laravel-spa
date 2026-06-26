@@ -160,6 +160,38 @@ public function home()
 
 ---
 
+## Global JavaScript & Third-Party Plugins
+
+Page-specific scripts in `@section('script')` run automatically on every navigation — no extra setup needed.
+
+For global scripts that need to run on every page, place your JS file after `@spaEngine`:
+
+```blade
+@spaEngine
+<script src="{{ asset('js/app.js') }}"></script>
+@yield('script')
+```
+
+In `app.js`, use `spa:loaded` to re-initialize plugins after each navigation. Here's an example with Select2:
+
+```javascript
+document.addEventListener('spa:loaded', function () {
+    $('.select2').select2();
+});
+```
+
+For event listeners, attach them to `document` once — they work on every page automatically:
+
+```javascript
+document.addEventListener('click', function (e) {
+    if (e.target.matches('.delete-btn')) {
+        // works on every page
+    }
+});
+```
+
+---
+
 ## What works out of the box
 
 - URL updates, back/forward button, refresh, direct links — all work
@@ -167,6 +199,7 @@ public function home()
 - Session expiry redirects cleanly instead of breaking
 - Hover prefetch — pages start loading before you even click
 - Works with both `@extends` and `x-layout`
+- `spa:loaded` event fires after every navigation for global plugin re-initialization
 
 ---
 
