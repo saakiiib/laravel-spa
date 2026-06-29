@@ -214,7 +214,7 @@ document.addEventListener('click', function (e) {
 
 Found a bug or want to improve something? PRs are welcome on [GitHub](https://github.com/saakiiib/laravel-spa).
 
----
+--- 
 
 ## License
 
